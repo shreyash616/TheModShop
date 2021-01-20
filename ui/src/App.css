@@ -36,3 +36,38 @@
     transform: rotate(360deg);
   }
 }
+
+.hidden {
+  opacity: 0;
+}
+
+.appear-animation {
+  opacity: 1;
+  animation: appear 0.5s ease-out;
+}
+
+.disappear-animation {
+  opacity: 0;
+  animation: disappear 0.5s ease-out;
+}
+    
+@keyframes appear {
+    from {
+        opacity: 1;            
+        transform: translate(0%, 150%);             
+    }
+    to {
+        opacity: 1;                    
+        transform: translate(0%, 0%);            
+    }
+}
+@keyframes disappear {
+    from {
+        opacity: 1;            
+        transform: translate(0%, 0%);             
+    }
+    to {
+        opacity: 1;                    
+        transform: translate(0%, 155%);            
+    }
+}
