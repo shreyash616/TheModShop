@@ -19,6 +19,12 @@ import
         AnimationWrapper,
         SVG
     } from './styles'
+import { connect } from 'react-redux'
+import { getKeyValue } from '../../../common/utils/utils'
+
+const mapStateToProps = store => ({
+    signInData: store.signIn
+})
 
 const Home = (props) => {
 
@@ -49,16 +55,27 @@ const Home = (props) => {
         }, 500)
     }
 
+    const handleLogOut = () => {
+        props.actions.initiateSignOut()
+    }
+
     const HeaderButtons = () => {
+        const signInStatus = getKeyValue(['signInData', 'status'], props) === 'success'
         return (
-            <RowWrapper>
+            !signInStatus
+            ? <RowWrapper>
                 <HeaderButtonWrapper rightMargin>
                     <Button onClick={() => redirectToLink('signUp')} onKeyPress={() => redirectToLink('signUp')}>{Constants.SIGN_UP}</Button>
                 </HeaderButtonWrapper>
                 <HeaderButtonWrapper>
                     <Button onClick={() => redirectToLink('signIn')} onKeyPress={() => redirectToLink('signIn')}>{Constants.SIGN_IN}</Button>
                 </HeaderButtonWrapper>
-            </RowWrapper>
+              </RowWrapper>
+            : <RowWrapper>                
+                <HeaderButtonWrapper>
+                    <Button onClick={() => handleLogOut()} onKeyPress={() => handleLogOut()}>{Constants.SIGN_OUT}</Button>
+                </HeaderButtonWrapper>
+              </RowWrapper>
         )
     }
 
@@ -130,4 +147,4 @@ const Home = (props) => {
 
 }
 
-export default Home
+export default connect(mapStateToProps, null)(Home)

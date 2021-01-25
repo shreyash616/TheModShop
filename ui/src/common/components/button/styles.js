@@ -37,7 +37,7 @@ export const CustomButton = styled.button`
         background: rgb(256,256,256,0.4);        
     }
     &:focus{
-        background: rgb(256,256,256,0.4);
+        border: ${spacing2} solid ${styleVars.colors.oceanBlue};
     }
     &:after{
         background: none;

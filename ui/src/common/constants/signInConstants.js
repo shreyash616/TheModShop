@@ -1,7 +1,7 @@
 const constants = {
     SIGN_IN: 'Sign In',
     SIGN_UP: 'Sign Up',
-    SIGN_IN_HEADING: 'Sign In',
+    SIGN_IN_HEADING: 'Sign in!',
     HOME: 'Home',
     USERNAME_LABEL: 'Username/Email',
     USERNAME_REGEX: /^[a-zA-z0-9]*$/,

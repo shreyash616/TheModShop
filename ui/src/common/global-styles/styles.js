@@ -16,7 +16,9 @@ const styles = {
     },
     colors: {
         white: '#ffffff',
-        red: '#ad0505'
+        red: '#ad0505',
+        matteBlack: '#181818',
+        oceanBlue: '#1064b3'        
     },
     breakpoints: {
         tabletLandscape: '(min-width: 1024px)',

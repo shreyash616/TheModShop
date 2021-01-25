@@ -41,33 +41,12 @@
   opacity: 0;
 }
 
-.appear-animation {
-  opacity: 1;
-  animation: appear 0.5s ease-out;
+.appear-animation {  
+  transform: translate(0%, -150%);
+  transition: all 1s;
 }
 
-.disappear-animation {
-  opacity: 0;
-  animation: disappear 0.5s ease-out;
-}
-    
-@keyframes appear {
-    from {
-        opacity: 1;            
-        transform: translate(0%, 150%);             
-    }
-    to {
-        opacity: 1;                    
-        transform: translate(0%, 0%);            
-    }
-}
-@keyframes disappear {
-    from {
-        opacity: 1;            
-        transform: translate(0%, 0%);             
-    }
-    to {
-        opacity: 1;                    
-        transform: translate(0%, 155%);            
-    }
+.disappear-animation {   
+  transform: translate(0%, 150%);
+  transition: all 1s;
 }

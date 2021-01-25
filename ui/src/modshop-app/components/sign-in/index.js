@@ -1,21 +1,29 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import {connect} from 'react-redux'
 
 import Button from '../../../common/components/button'
 import TextInput from '../../../common/components/text-input'
-import { H2 } from '../../../common/components/typography'
+import { H1 } from '../../../common/components/typography'
+import Alert from '../../../common/components/alert'
 
 import Constants from '../../../common/constants/signInConstants'
+
+import {getKeyValue} from '../../../common/utils/utils'
 
 import {
     PageWrapper,
     RowWrapper,
     HeaderButtonWrapper,
     FormWrapper,
-    InputWrapper,
-    Center,
+    InputWrapper,    
     ColumnWrapper,
-    TextButton
+    TextButton,
+    AlertWrapper
 } from './styles'
+
+const mapStateToProps = store => ({
+    signInData: store.signIn
+})
 
 const SignIn = (props) => {
 
@@ -26,6 +34,7 @@ const SignIn = (props) => {
     const [userNameError, setUserNameError] = useState('')    
     const [password, setPassword] = useState('')
     const [passwordError, setPasswordError] = useState('')
+    const [showAlert, setShowAlert] = useState('')   
 
     const focusOnField = (id, ref) => {
         const field = document.getElementById(id)
@@ -38,6 +47,18 @@ const SignIn = (props) => {
             props.history.push('/'+link)
         }, 500)
     }
+
+    useEffect(() => {
+        props.actions.clearSignInData()
+        // eslint-disable-next-line
+    }, [])
+
+    useEffect(()=>{
+        const signInStatus = getKeyValue(['signInData', 'status'], props)        
+        if(signInStatus === 'success'){
+            props.history.push('/home')                                
+        }
+    }, [props])
 
     const handleChange = (value, field) => {
         if(field === 'username') {
@@ -59,11 +80,22 @@ const SignIn = (props) => {
     }
 
     const handleSignIn = () => {
+        const payload = {
+            data: {
+                username: userName,
+                password
+            }
+        }
+        props.actions.InitiateSignIn(payload)
+    }
+
+    const validateSignIn = () => {
         clearAllErrors()
         if(userName){
             setUserNameError('')
             if(password){
-                setPasswordError('')                
+                setPasswordError('')
+                handleSignIn()
             } else {
                 setPasswordError(Constants.PASSWORD_EMPTY_ERROR)
                 focusOnField('password-input', passwordRef)
@@ -89,7 +121,8 @@ const SignIn = (props) => {
     
     const SignInForm = (
         <FormWrapper>
-            <Center><H2>{Constants.SIGN_IN_HEADING}</H2></Center>
+            {!!showAlert && <AlertWrapper><Alert reason='info' closeAlert={() => setShowAlert('')}><span tabIndex={-1}>{showAlert}</span></Alert></AlertWrapper>}            
+            <H1>{Constants.SIGN_IN_HEADING}</H1>
             <InputWrapper ref={usernameRef}>
                 <TextInput
                     id='username'
@@ -120,19 +153,19 @@ const SignIn = (props) => {
             </InputWrapper>
             <ColumnWrapper>
                 <HeaderButtonWrapper fullWidth>
-                    <Button onClick={handleSignIn} onKeyPress={handleSignIn}>{Constants.SIGN_IN}</Button>
+                    <Button onClick={validateSignIn} onKeyPress={validateSignIn}>{Constants.SIGN_IN}</Button>
                 </HeaderButtonWrapper>
-                <TextButton role='button'>{Constants.FORGOT_PASSWORD}</TextButton>
+                <TextButton tabIndex={0} role='button'>{Constants.FORGOT_PASSWORD}</TextButton>
             </ColumnWrapper>
         </FormWrapper>
     )
 
     return (
         <PageWrapper>
-            <HeaderButtons/>
+            <HeaderButtons/>            
             {SignInForm}
         </PageWrapper>
     )
 }
 
-export default SignIn
+export default connect(mapStateToProps, null)(SignIn)

@@ -22,3 +22,9 @@ export const MainWrapper = styled.div`
 export const Backdrop = styled.div`
     background: rgb(0,0,0,0.7);
 `
+export const BottomSeparator = styled.div`
+    padding: 70px;
+    @media ${styleVals.breakpoints.tabletPortrait}, ${styleVals.breakpoints.tabletLandscape} {
+        padding: ${styleVals.spacing.spacing0};
+    }
+`

@@ -16,7 +16,7 @@ import {
 const DialogModal = (props) => {
 
     return props.showModal && <BlockingWrapper>
-        <ModalWrapper showModal={props.showModal}>
+        <ModalWrapper role='modal' showModal={props.showModal}>
             <ModalHeader>
                 <TitleWrapper>
                     <H1>{props.title}</H1>

@@ -12,12 +12,11 @@ export const BlockingWrapper = styled.div`
 `
 
 export const ModalWrapper = styled.div`
-    background-color: rgba(31,22,25,1);    
+    background-color: ${styleVars.colors.matteBlack};    
     display: inline-block;
     margin: auto;    
-    padding: ${styleVars.spacing.spacing16};
-    border: ${styleVars.spacing.spacing2} solid ${styleVars.colors.white};
-    border-radius: 2%;
+    padding: ${styleVars.spacing.spacing16};    
+    border-radius: 10px;
     min-height: 600px;
     animation: ${props => props.showModal?'showUp 0.5s ease-out':'disappear 0.5s ease-out'};     
     @keyframes showUp {

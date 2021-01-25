@@ -78,3 +78,6 @@ export const InputWrapper = styled.div`
 export const Center = styled.div`
     text-align: center;
 `
+
+export const AlertWrapper = styled.div`    
+`

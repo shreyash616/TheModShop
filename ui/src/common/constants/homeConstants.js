@@ -6,6 +6,7 @@ const constants = {
     DEVICES_SUPPORT_LABEL: 'Devices We Support',
     SIGN_IN: 'Sign In',
     SIGN_UP: 'Sign Up',
+    SIGN_OUT: 'Sign Out',
     ABOUT_KEY: 'ABOUT',
     EXPERIENCE_KEY: 'EXPERIENCE',
     DEVICES_KEY: 'DEVICES',
