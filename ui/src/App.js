@@ -4,11 +4,11 @@ import {Redirect, Route, Switch, withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 
-import Actions from './app/actions'
+import Actions from './modshop-app/actions'
 
-import Home from './app/components/home'
-import SignIn from './app/components/sign-in'
-import SignUp from './app/components/sign-up'
+import Home from './modshop-app/components/home'
+import SignIn from './modshop-app/components/sign-in'
+import SignUp from './modshop-app/components/sign-up'
 import Spinner from './common/components/blocking-spinner'
 
 import {

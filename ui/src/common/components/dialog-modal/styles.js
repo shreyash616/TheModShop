@@ -2,18 +2,20 @@ import styled from 'styled-components'
 import styleVars from '../../../common/global-styles/styles'
 
 export const BlockingWrapper = styled.div`    
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgba(0,0,0,0.6);
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    display: flex; 
+    display: flex;
+    text-align: initial;
 `
 
 export const ModalWrapper = styled.div`
     background-color: ${styleVars.colors.matteBlack};    
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     margin: auto;    
     padding: ${styleVars.spacing.spacing16};    
     border-radius: 10px;
@@ -42,41 +44,49 @@ export const ModalWrapper = styled.div`
 `
 
 export const ModalHeader = styled.div`
-    display: block;    
+    display: flex;
+    flex-direction: row;    
     height: 40px;
     min-width: 270px;
+    margin-bottom: ${styleVars.spacing.spacing32};
     padding-left: ${styleVars.spacing.spacing8};
     padding-right: ${styleVars.spacing.spacing8};    
     @media ${styleVars.breakpoints.tabletPortrait}, ${styleVars.breakpoints.tabletLandscape} {
         min-width: 400px;
-    }
+    }    
 `
 export const ModalBody = styled.div`
+    display: flex;
     min-height: 80px;
     min-width: 270px;
     padding: ${styleVars.spacing.spacing8};
     @media ${styleVars.breakpoints.tabletPortrait}, ${styleVars.breakpoints.tabletLandscape} {
         min-width: 400px;
     }
+    margin-bottom: ${styleVars.spacing.spacing16};
 `
 export const ModalFooter = styled.div`
-    height: 80px;
+    display: flex;
+    flex-direction: column;
+    min-height: 80px;
     min-width: 270px;
-    padding: ${styleVars.spacing.spacing8};
+    padding-left: ${styleVars.spacing.spacing8};
+    padding-right: ${styleVars.spacing.spacing8};
+    margin-top: auto;
     @media ${styleVars.breakpoints.tabletPortrait}, ${styleVars.breakpoints.tabletLandscape} {
         min-width: 400px;
     }
 `
 export const TitleWrapper = styled.div`    
-    float: left;
-    padding-bottom: ${styleVars.spacing.spacing8};
+    margin-right: auto;
+    margin-bottom -${styleVars.spacing.spacing12};       
     border-bottom: ${styleVars.spacing.spacing2} solid ${styleVars.colors.white};
-    h1 {
+    h1 {        
         margin: ${styleVars.spacing.spacing0};        
     }
 `
 export const CloseIconWrapper = styled.div`
-    float: right;
+    margin-left: auto;
     &:hover {
         transform: scale(1.1);
         cursor: pointer;        
@@ -86,4 +96,11 @@ export const CloseIconWrapper = styled.div`
 export const SVG = styled.svg`    
     transform: scale(1.5);
     margin-top: ${styleVars.spacing.spacing14};
+`
+export const DialogModalButtonWrapper = styled.div`
+    button {
+        width: 100%;
+    }
+    margin-top: auto;
+    margin-bottom: ${styleVars.spacing.spacing16};
 `

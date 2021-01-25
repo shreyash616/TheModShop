@@ -1,4 +1,5 @@
 import {H1} from '../typography'
+import Button from '../button'
 
 import styleVars from '../../global-styles/styles'
 
@@ -10,7 +11,8 @@ import {
     ModalFooter,
     TitleWrapper,
     CloseIconWrapper,
-    SVG
+    SVG,
+    DialogModalButtonWrapper
 } from './styles'
 
 const DialogModal = (props) => {
@@ -25,12 +27,14 @@ const DialogModal = (props) => {
                 <SVG tabIndex={0} onClick={props.closeModal} onKeyPress={props.closeModal} xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d={styleVars.icons.cross} fill='white'/></SVG>
                 </CloseIconWrapper>                
             </ModalHeader>
-
             <ModalBody>
-
+                {props.children}
             </ModalBody>
-
-            <ModalFooter></ModalFooter>
+            {props.showPrimaryButton && 
+            <ModalFooter>
+                {props.showPrimaryButton && <DialogModalButtonWrapper><Button onClick={props.onPrimaryButtonClick}>{props.primaryButtonText}</Button></DialogModalButtonWrapper>}
+                {props.showSecondaryButton && <DialogModalButtonWrapper><Button onClick={props.onSecondaryButtonClick}>{props.secondaryButtonText}</Button></DialogModalButtonWrapper>}
+            </ModalFooter>}
         </ModalWrapper>
     </BlockingWrapper>
 }

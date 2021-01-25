@@ -127,8 +127,75 @@ const Home = (props) => {
                 title={modalContent.title}
                 showModal={showInfoModal}
                 closeModal={closeModal}
+                primaryButtonText={'Close'}
+                onPrimaryButtonClick={closeModal}                
+                secondaryButtonText={'Exit'}
+                onSecondaryButtonClick={closeModal}
+                showPrimaryButton
+                showSecondaryButton
             >
+                asdasdasdasdasdas
+                <br/>                
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas
+                <br/> 
+                asdasdasdasdasdas                
             </DialogModal>)
     }
     
