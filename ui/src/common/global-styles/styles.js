@@ -19,7 +19,7 @@ const styles = {
     },
     colors: {
         white: '#ffffff',
-        red: '#ad0505',
+        red: '#910303',
         matteBlack: '#181818',
         oceanBlue: '#1064b3'        
     },

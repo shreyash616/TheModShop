@@ -57,6 +57,10 @@ const SignIn = (props) => {
         const signInStatus = getKeyValue(['signInData', 'status'], props)        
         if(signInStatus === 'success'){
             props.history.push('/home')                                
+        } else if (signInStatus === 'error') {            
+            const errorMessage = getKeyValue(['signInData', 'error', 'data', 'data', 'errorDesc'], props) || getKeyValue(['signInData', 'error', 'message'], props)
+            setShowAlert(errorMessage)
+            props.actions.clearSignInData()
         }
     }, [props])
 
@@ -120,8 +124,7 @@ const SignIn = (props) => {
     }
     
     const SignInForm = (
-        <FormWrapper>
-            {!!showAlert && <AlertWrapper><Alert reason='info' closeAlert={() => setShowAlert('')}><span tabIndex={-1}>{showAlert}</span></Alert></AlertWrapper>}            
+        <FormWrapper>            
             <H1>{Constants.SIGN_IN_HEADING}</H1>
             <InputWrapper ref={usernameRef}>
                 <TextInput
@@ -133,8 +136,7 @@ const SignIn = (props) => {
                     onChange={(value) => handleChange(value, 'username')}
                     length={16}
                     error={!!userNameError}
-                    errorMessage={userNameError}
-                    validationRegex={Constants.USERNAME_REGEX}
+                    errorMessage={userNameError}                    
                 />
             </InputWrapper>
             <InputWrapper ref={passwordRef}>
@@ -162,7 +164,8 @@ const SignIn = (props) => {
 
     return (
         <PageWrapper>
-            <HeaderButtons/>            
+            <HeaderButtons/>
+            {!!showAlert && <AlertWrapper><Alert reason='error' closeAlert={() => setShowAlert('')}><span tabIndex={-1}>{showAlert}</span></Alert></AlertWrapper>}            
             {SignInForm}
         </PageWrapper>
     )

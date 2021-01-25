@@ -25,6 +25,7 @@ export const RowWrapper = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: ${props => props.moreTopMargin?styleVars.spacing.spacing20:''};
+    margin-bottom: 100px;
     @media ${styleVars.breakpoints.tabletLandscape}, ${styleVars.breakpoints.tabletPortrait} { 
         flex-direction: row;       
         margin-left: ${props => props.noLeftAlign?'':'auto'};        
@@ -51,8 +52,7 @@ export const FormWrapper = styled.div`
     flex-direction: column;    
     padding: ${styleVars.spacing.spacing20};
     margin-left: auto;
-    margin-right: auto;
-    margin-top: 100px;
+    margin-right: auto;    
     width: 100%;
     min-height: 420px;
     border: ${styleVars.spacing.spacing2} solid ${styleVars.colors.white};
@@ -79,5 +79,12 @@ export const Center = styled.div`
     text-align: center;
 `
 
-export const AlertWrapper = styled.div`    
+export const AlertWrapper = styled.div`
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: ${styleVars.spacing.spacing12};
+    @media ${styleVars.breakpoints.tabletLandscape}, ${styleVars.breakpoints.tabletPortrait} {
+        width: 500px;
+    }
 `
