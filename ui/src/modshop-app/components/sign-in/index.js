@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 
 import Button from '../../../common/components/button'
 import TextInput from '../../../common/components/text-input'
+import Dropdown from '../../../common/components/drop-down'
 import { H1 } from '../../../common/components/typography'
 import Alert from '../../../common/components/alert'
 
@@ -18,7 +19,8 @@ import {
     InputWrapper,    
     ColumnWrapper,
     TextButton,
-    AlertWrapper
+    AlertWrapper,
+    Center
 } from './styles'
 
 const mapStateToProps = store => ({
@@ -125,7 +127,7 @@ const SignIn = (props) => {
     
     const SignInForm = (
         <FormWrapper>            
-            <H1>{Constants.SIGN_IN_HEADING}</H1>
+            <Center><H1>{Constants.SIGN_IN_HEADING}</H1></Center>
             <InputWrapper ref={usernameRef}>
                 <TextInput
                     id='username'
@@ -148,9 +150,18 @@ const SignIn = (props) => {
                     type='password'
                     value={password}
                     onChange={(value) => handleChange(value, 'password')}
-                    length={16}
+                    length={16}                    
                     error={!!passwordError}
                     errorMessage={passwordError}
+                />
+            </InputWrapper>
+            <InputWrapper ref={passwordRef}>
+                <Dropdown
+                    id='items'
+                    label={'Items'}
+                    ariaLabel={'Items'}
+                    placeholder={'Items'}
+                    items={['item1', 'item2']}                  
                 />
             </InputWrapper>
             <ColumnWrapper>

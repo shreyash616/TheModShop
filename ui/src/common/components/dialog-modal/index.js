@@ -19,21 +19,21 @@ const DialogModal = (props) => {
 
     return props.showModal && <BlockingWrapper>
         <ModalWrapper role='modal' showModal={props.showModal}>
-            <ModalHeader>
+            {props.showTitle && <ModalHeader>
                 <TitleWrapper>
                     <H1>{props.title}</H1>
                 </TitleWrapper>
                 <CloseIconWrapper>                    
                 <SVG tabIndex={0} onClick={props.closeModal} onKeyPress={props.closeModal} xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d={styleVars.icons.cross} fill='white'/></SVG>
                 </CloseIconWrapper>                
-            </ModalHeader>
+            </ModalHeader>}
             <ModalBody>
                 {props.children}
             </ModalBody>
             {props.showPrimaryButton && 
-            <ModalFooter>
-                {props.showPrimaryButton && <DialogModalButtonWrapper><Button onClick={props.onPrimaryButtonClick}>{props.primaryButtonText}</Button></DialogModalButtonWrapper>}
+            <ModalFooter>                
                 {props.showSecondaryButton && <DialogModalButtonWrapper><Button onClick={props.onSecondaryButtonClick}>{props.secondaryButtonText}</Button></DialogModalButtonWrapper>}
+                {props.showPrimaryButton && <DialogModalButtonWrapper rightButton><Button onClick={props.onPrimaryButtonClick}>{props.primaryButtonText}</Button></DialogModalButtonWrapper>}
             </ModalFooter>}
         </ModalWrapper>
     </BlockingWrapper>

@@ -9,7 +9,8 @@ import {
     StyledInput,
     Label,
     PasswordShowButton,
-    RowWrapper
+    RowWrapper,
+    Suggestion
 } from './styles'
 
 const TextInput = (props) => { 
@@ -41,8 +42,9 @@ const TextInput = (props) => {
                     type={showPassword?'text':'password'}                       
                 />
                 {showPasswordButton() && <PasswordShowButton onClick={triggerShowPassword}>{showPassword?'Hide':'Show'}</PasswordShowButton>}
-            </RowWrapper>
-            {<P color={styleVars.colors.red}>{props.errorMessage}</P>}
+            </RowWrapper>            
+            <P lessLineHeight color={styleVars.colors.red}>{props.errorMessage}</P>
+            {props.suggestion && <Suggestion>{String(props.suggestion).trim()}</Suggestion>}                        
         </StyledInputWrapper>
     )
 }

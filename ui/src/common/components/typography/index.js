@@ -13,7 +13,7 @@ export const H3 = styled.h3`
 export const P = styled.p`
     font-weight: normal;
     color: ${props => props.color || styleVars.colors.white};
-    font-size: ${styleVars.spacing.spacing14};
-    font-weight: bold;
+    font-size: ${styleVars.spacing.spacing16};    
     margin-top: ${styleVars.spacing.spacing8};
+    line-height: ${props => props.lessLineHeight?'1em':'1.5em'};
 `

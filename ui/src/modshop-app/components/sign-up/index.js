@@ -150,7 +150,7 @@ const SignUp = (props) => {
                     placeholder={Constants.NAME_LABEL}
                     value={name}
                     onChange={(value) => handleChange(value, 'name')}
-                    length={16}
+                    length={16}                    
                     error={!!nameError}
                     errorMessage={nameError}                    
                 />
@@ -178,6 +178,7 @@ const SignUp = (props) => {
                     value={password}
                     onChange={(value) => handleChange(value, 'password')}
                     length={16}
+                    suggestion={Constants.PASSWORD_SUGGESTION}
                     error={!!passwordError}
                     errorMessage={passwordError}
                 />

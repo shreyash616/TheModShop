@@ -19,7 +19,7 @@ export const ModalWrapper = styled.div`
     margin: auto;    
     padding: ${styleVars.spacing.spacing16};    
     border-radius: 10px;
-    min-height: 600px;
+    min-height: 200px;
     animation: ${props => props.showModal?'showUp 0.5s ease-out':'disappear 0.5s ease-out'};     
     @keyframes showUp {
         from {
@@ -47,7 +47,7 @@ export const ModalHeader = styled.div`
     display: flex;
     flex-direction: row;    
     height: 40px;
-    min-width: 270px;
+    width: 370px;
     margin-bottom: ${styleVars.spacing.spacing32};
     padding-left: ${styleVars.spacing.spacing8};
     padding-right: ${styleVars.spacing.spacing8};    
@@ -57,8 +57,8 @@ export const ModalHeader = styled.div`
 `
 export const ModalBody = styled.div`
     display: flex;
-    min-height: 80px;
-    min-width: 270px;
+    min-height: 20px;
+    width: 370px;
     padding: ${styleVars.spacing.spacing8};
     @media ${styleVars.breakpoints.tabletPortrait}, ${styleVars.breakpoints.tabletLandscape} {
         min-width: 400px;
@@ -67,9 +67,9 @@ export const ModalBody = styled.div`
 `
 export const ModalFooter = styled.div`
     display: flex;
-    flex-direction: column;
-    min-height: 80px;
-    min-width: 270px;
+    flex-direction: row;
+    height: auto;
+    width: 370px;
     padding-left: ${styleVars.spacing.spacing8};
     padding-right: ${styleVars.spacing.spacing8};
     margin-top: auto;
@@ -99,8 +99,7 @@ export const SVG = styled.svg`
 `
 export const DialogModalButtonWrapper = styled.div`
     button {
-        width: 100%;
+        width: ${styleVars.spacing.spacing100};
     }
-    margin-top: auto;
-    margin-bottom: ${styleVars.spacing.spacing16};
+    margin-left: ${props => props.rightButton && 'auto'};
 `

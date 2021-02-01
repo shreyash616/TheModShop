@@ -13,6 +13,7 @@ const constants = {
     USERNAME_INVALID_ERROR: 'Please enter the username using alphabets and numbers only.',
     PASSWORD_LABEL: 'Password',
     PASSWORD_EMPTY_ERROR: 'Please enter the password.',
+    PASSWORD_SUGGESTION: 'Tip: Please try to use atleast one uppercase alphabet and one special character.',
     FORGOT_PASSWORD: 'Forgot your password?'
 }
 

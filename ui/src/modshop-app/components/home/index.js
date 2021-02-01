@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Button from '../../../common/components/button'
 import DialogModal from '../../../common/components/dialog-modal'
 import Constants from '../../../common/constants/homeConstants'
-import {H1, H3} from '../../../common/components/typography'
+import {H1, H3, P} from '../../../common/components/typography'
 
 import styleVars from '../../../common/global-styles/styles'
 
@@ -17,7 +17,8 @@ import
         HeaderButtonWrapper,
         RowWrapper,
         AnimationWrapper,
-        SVG
+        SVG,
+        SignOutText
     } from './styles'
 import { connect } from 'react-redux'
 import { getKeyValue } from '../../../common/utils/utils'
@@ -29,19 +30,16 @@ const mapStateToProps = store => ({
 const Home = (props) => {
 
     const [showInfoModal, setShowInfoModal] = useState(false)
+    const [showSignOutModal, setShowSignOutModal] = useState(false)
     const [modalContent, setModalContent] = useState({
         title: '',
-        content: '',
-        primaryButton: '',
-        secondaryButton: ''
+        content: ''
     })
 
     useEffect(()=>{
         !showInfoModal && setModalContent({
             title: '',
-            content: '',
-            primaryButton: '',
-            secondaryButton: ''
+            content: ''            
         })
     }, [showInfoModal])
 
@@ -55,8 +53,9 @@ const Home = (props) => {
         }, 500)
     }
 
-    const handleLogOut = () => {
+    const handleSignOut = () => {
         props.actions.initiateSignOut()
+        setShowSignOutModal(false)
     }
 
     const HeaderButtons = () => {
@@ -73,7 +72,7 @@ const Home = (props) => {
               </RowWrapper>
             : <RowWrapper>                
                 <HeaderButtonWrapper>
-                    <Button onClick={() => handleLogOut()} onKeyPress={() => handleLogOut()}>{Constants.SIGN_OUT}</Button>
+                    <Button onClick={() => setShowSignOutModal(true)} onKeyPress={() => setShowSignOutModal(true)}>{Constants.SIGN_OUT}</Button>
                 </HeaderButtonWrapper>
               </RowWrapper>
         )
@@ -95,7 +94,8 @@ const Home = (props) => {
     const retrieveModalContent = (key) => {        
         setModalContent({
             ...modalContent,
-            title: Constants[key.toUpperCase()]['TITLE']
+            title: Constants[key.toUpperCase()]['TITLE'],
+            content: Constants[key.toUpperCase()]['CONTENT']
         })        
     }
 
@@ -106,12 +106,12 @@ const Home = (props) => {
             <ButtonWrapper>
                 <Button onClick={() => retrieveModalContent(Constants.ABOUT_KEY)}>{Constants.UNDER_THE_HOOD_LABEL}</Button>
             </ButtonWrapper>
-            <VerticalSeparator height={'40px'}/>
-            <ButtonWrapper>
+            {/* <VerticalSeparator height={'40px'}/> */}
+            <ButtonWrapper hideTopBorder>
                 <Button onClick={() => retrieveModalContent(Constants.EXPERIENCE_KEY)}>{Constants.EXPERIENCE_LABEL}</Button>
             </ButtonWrapper>
-            <VerticalSeparator height={'40px'}/>
-            <ButtonWrapper>
+            {/* <VerticalSeparator height={'40px'}/> */}
+            <ButtonWrapper hideTopBorder>
                 <Button onClick={() => retrieveModalContent(Constants.DEVICES_KEY)}>{Constants.DEVICES_SUPPORT_LABEL}</Button>
             </ButtonWrapper>
         </React.Fragment>)
@@ -121,81 +121,35 @@ const Home = (props) => {
         setShowInfoModal(false)
     }
 
+    const closeSignOutModal = () => {
+        setShowSignOutModal(false)
+    }
+
     const InfoModal = () => {
         return (
             <DialogModal
                 title={modalContent.title}
                 showModal={showInfoModal}
-                closeModal={closeModal}
-                primaryButtonText={'Close'}
-                onPrimaryButtonClick={closeModal}                
-                secondaryButtonText={'Exit'}
-                onSecondaryButtonClick={closeModal}
+                closeModal={closeModal}                                
+                showTitle                              
+            >
+                <P>{modalContent.content}</P>                             
+            </DialogModal>)
+    }
+
+    const SignOutModal = () => {
+        return (
+            <DialogModal                
+                showModal={showSignOutModal}
+                closeModal={closeSignOutModal}
+                primaryButtonText={Constants.YES}
+                onPrimaryButtonClick={handleSignOut}                
+                secondaryButtonText={Constants.NO}
+                onSecondaryButtonClick={closeSignOutModal}
                 showPrimaryButton
                 showSecondaryButton
-            >
-                asdasdasdasdasdas
-                <br/>                
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas
-                <br/> 
-                asdasdasdasdasdas                
+            >        
+                <SignOutText>{Constants.SIGN_OUT_CONFIRMATION}</SignOutText>
             </DialogModal>)
     }
     
@@ -209,6 +163,7 @@ const Home = (props) => {
                 </PageHeadingWrapper>   
             </AnimationWrapper>
             <InfoModal/>
+            <SignOutModal/>
         </PageWrapper>
     )
 

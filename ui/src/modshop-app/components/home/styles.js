@@ -59,7 +59,8 @@ export const ButtonWrapper = styled.div`
     button {        
         width: 300px;                                             
         margin-left: auto;
-        margin-right: auto;      
+        margin-right: auto;
+        border-top: ${props => props.hideTopBorder && 'none'};
     }       
 `
 export const RowWrapper = styled.div`
@@ -79,4 +80,9 @@ export const HeaderButtonWrapper = styled.div`
             width: 200px;
         }      
     }
+`
+
+export const SignOutText = styled.span`
+    display: inline-block;
+    margin-top: 30px;
 `

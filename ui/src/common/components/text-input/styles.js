@@ -55,6 +55,9 @@ export const PasswordShowButton = styled(Button)`
     }
     &: hover {
         background: none;
-    }
-    
+    }   
+`
+export const Suggestion = styled.span`
+    display: inline-block;    
+    color: ${styleVars.colors.oceanBlue};
 `

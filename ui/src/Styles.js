@@ -20,7 +20,7 @@ export const MainWrapper = styled.div`
     overflow: hidden;   
 `
 export const Backdrop = styled.div`
-    background: rgb(0,0,0,0.7);
+    background: rgb(0,0,0,0.85);
 `
 export const BottomSeparator = styled.div`
     padding: 70px;
