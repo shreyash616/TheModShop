@@ -42,17 +42,17 @@ const Dropdown = (props) => {
     return <StyledSelectWrapper>
         <Label value={dropdownValue} htmlFor={`${props.id}-dropdown`}>{props.label}</Label>
         <RowWrapper>
-        <StyledSelect
-            id={`${props.id}-dropdown`}
-            aria-label={props.ariaLabel}
-            aria-haspopup='listbox'
-            aria-expanded='false'
-            onClick={e => triggerDropDown(e)}
-            onKeyPress={e => triggerDropDown(e)}
-            value={dropdownValue}
-            onChange={(e) => searchAndSetDropdownValue(e.target.value)}            
-        />
-        <ArrowButton onClick={e => triggerDropDown(e)} onKeyPress={e => triggerDropDown(e)} isDropdownActive={isDropdownActive} width="24" height="24" viewBox="0 0 24 24"><path role='button' tabIndex={0} onClick={e => triggerDropDown(e)} onKeyPress={e => triggerDropDown(e)} d={styleVars.icons.downArrow} fill='white'/></ArrowButton>
+            <StyledSelect
+                id={`${props.id}-dropdown`}
+                aria-label={props.ariaLabel}
+                aria-haspopup='listbox'
+                aria-expanded='false'
+                onClick={e => triggerDropDown(e)}
+                onKeyPress={e => triggerDropDown(e)}
+                value={dropdownValue}
+                onChange={(e) => searchAndSetDropdownValue(e.target.value)}            
+            />
+            <ArrowButton onClick={e => triggerDropDown(e)} onKeyPress={e => triggerDropDown(e)} isDropdownActive={isDropdownActive} width="24" height="24" viewBox="0 0 24 24"><path role='button' tabIndex={0} onClick={e => triggerDropDown(e)} onKeyPress={e => triggerDropDown(e)} d={styleVars.icons.downArrow} fill='white'/></ArrowButton>
         </RowWrapper>
         <ListItemWrapper>
         {isDropdownActive && props.items.map((item, i) => {

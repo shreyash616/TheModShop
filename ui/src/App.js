@@ -5,6 +5,10 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 
 import Actions from './modshop-app/actions'
+import styleVars from './common/global-styles/styles'
+import Constants from './common/constants/appConstants'
+
+import Navbar from './modshop-app/components/navbar'
 
 import Home from './modshop-app/components/home'
 import SignIn from './modshop-app/components/sign-in'
@@ -13,9 +17,10 @@ import Spinner from './common/components/blocking-spinner'
 
 import {
   MainWrapper,
-  Backdrop,
-  BottomSeparator
+  ContentWrapper,
+  Footer
 } from './Styles'
+import { P } from './common/components/typography';
 
 const mapStateToProps = store => ({
   spinnerState: store.global.spinnerState,
@@ -26,7 +31,7 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(Actions, dispatch)
 })
 
-const App = (props) => {  
+const App = (props) => {    
 
   useEffect(()=>{
     props.signInStatus === 'success' && setTimeout(()=>{
@@ -37,16 +42,19 @@ const App = (props) => {
 
   return (
     <MainWrapper>
-      <Backdrop>           
+      <Navbar {...props}/>
+      <ContentWrapper>
         <Switch>          
           <Route key='signIn' path='/signIn' render={() => <SignIn {...props}/>} />
           <Route key='signUp' path='/signUp' render={() => <SignUp {...props}/>} /> 
           <Route key='home' path='/home' render={() => <Home {...props}/>} />         
           <Redirect from='/' to='/home'/>
         </Switch>
-        <BottomSeparator/>
-        <Spinner showModal={props.spinnerState.status}/>
-      </Backdrop> 
+      </ContentWrapper>     
+      <Spinner showModal={props.spinnerState.status}/>
+      <Footer>
+        <P color={styleVars.colors.themeBackground}>{Constants.MODSHOP_FOOTER_LINE11} &copy; {Constants.MODSHOP_FOOTER_LINE12}</P>
+      </Footer>     
     </MainWrapper>
   )
 }

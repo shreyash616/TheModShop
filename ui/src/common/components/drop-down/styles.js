@@ -4,6 +4,7 @@ import styleVars from '../../global-styles/styles'
 export const StyledSelectWrapper = styled.div`
     display: flex;
     flex-direction: column;
+    position: relative;
 `
 export const RowWrapper = styled.div`
     display: flex;
@@ -13,7 +14,7 @@ export const RowWrapper = styled.div`
 export const Label = styled.label`    
     margin-bottom: ${styleVars.spacing.spacing0};
     margin-left: 1px;  
-    color: solid ${styleVars.colors.white};   
+    color: solid ${styleVars.colors.primaryTextColor};   
     @media ${styleVars.breakpoints.tabletLandscape}, ${styleVars.breakpoints.tabletPortrait} {
         margin-left: ${styleVars.spacing.spacing2};
     }
@@ -27,16 +28,16 @@ export const StyledSelect = styled.input`
     background: none;
     font-size: ${styleVars.spacing.spacing16};
     font-family: ${styleVars.fonts.globalFont};
-    color: ${styleVars.colors.white};
+    color: ${styleVars.colors.primaryTextColor};
     padding-top: ${styleVars.spacing.spacing12};
     padding-bottom: ${styleVars.spacing.spacing12};
     border: none;    
-    border-bottom: ${styleVars.spacing.spacing2} solid ${props => props.error?styleVars.colors.red:styleVars.colors.white};
+    border-bottom: ${styleVars.spacing.spacing2} solid ${props => props.error?styleVars.colors.red:styleVars.colors.primaryTextColor};
     &:focus {
-        border-bottom: ${styleVars.spacing.spacing2} solid ${props => props.error?styleVars.colors.red:styleVars.colors.oceanBlue};
+        border-bottom: ${styleVars.spacing.spacing2} solid ${props => props.error?styleVars.colors.red:styleVars.colors.themeColor};
     }
     &:hover {
-        border-bottom: ${styleVars.spacing.spacing2} solid ${props => props.error?styleVars.colors.red:styleVars.colors.oceanBlue};        
+        border-bottom: ${styleVars.spacing.spacing2} solid ${props => props.error?styleVars.colors.red:styleVars.colors.themeColor};        
         cursor: pointer;
     }
 `
@@ -53,8 +54,9 @@ export const ArrowButton = styled.svg`
     transition: transform 0.2s linear;    
 `
 export const ListItemWrapper = styled.div`
-    position: relative;
-    z-index: 1000;
+    position: fixed;
+    overflow: hidden;
+    top: 20px;
 `
 export const ListItem = styled.li`
     display: block;
@@ -63,16 +65,16 @@ export const ListItem = styled.li`
     background: none;
     font-size: ${styleVars.spacing.spacing16};
     font-family: ${styleVars.fonts.globalFont};
-    color: ${styleVars.colors.white};
+    color: ${styleVars.colors.primaryTextColor};
     padding: ${styleVars.spacing.spacing12};    
     border: none;    
-    border-bottom: ${styleVars.spacing.spacing2} solid ${props => props.error?styleVars.colors.red:styleVars.colors.white};
+    border-bottom: ${styleVars.spacing.spacing2} solid ${props => props.error?styleVars.colors.red:styleVars.colors.primaryTextColor};
     &:focus {
-        border-bottom: ${styleVars.spacing.spacing2} solid ${props => props.error?styleVars.colors.red:styleVars.colors.oceanBlue};
+        border-bottom: ${styleVars.spacing.spacing2} solid ${props => props.error?styleVars.colors.red:styleVars.colors.themeColor};
         background-color: rgba(255, 255, 255, 0.3);
     }
     &:hover {
-        border-bottom: ${styleVars.spacing.spacing2} solid ${props => props.error?styleVars.colors.red:styleVars.colors.oceanBlue};
+        border-bottom: ${styleVars.spacing.spacing2} solid ${props => props.error?styleVars.colors.red:styleVars.colors.themeColor};
         background-color: rgba(255, 255, 255, 0.3);
         cursor: pointer;
     }

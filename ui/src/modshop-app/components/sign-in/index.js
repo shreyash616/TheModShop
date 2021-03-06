@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 
 import Button from '../../../common/components/button'
 import TextInput from '../../../common/components/text-input'
-import Dropdown from '../../../common/components/drop-down'
+
 import { H1 } from '../../../common/components/typography'
 import Alert from '../../../common/components/alert'
 
@@ -12,8 +12,7 @@ import Constants from '../../../common/constants/signInConstants'
 import {getKeyValue} from '../../../common/utils/utils'
 
 import {
-    PageWrapper,
-    RowWrapper,
+    PageWrapper,    
     HeaderButtonWrapper,
     FormWrapper,
     InputWrapper,    
@@ -42,12 +41,6 @@ const SignIn = (props) => {
         const field = document.getElementById(id)
         field && field.focus()
         ref && ref.current && window.scroll(0, ref.current.offsetTop)
-    }
-
-    const redirectToLink = (link) => {        
-        setTimeout(() => {
-            props.history.push('/'+link)
-        }, 500)
     }
 
     useEffect(() => {
@@ -111,19 +104,6 @@ const SignIn = (props) => {
             focusOnField('username-input', usernameRef)
         }
     }
-
-    const HeaderButtons = () => {
-        return (
-            <RowWrapper>                
-                <HeaderButtonWrapper rightMargin>
-                    <Button onClick={() => redirectToLink('home')} onKeyPress={() => redirectToLink('home')}>{Constants.HOME}</Button>
-                </HeaderButtonWrapper>
-                <HeaderButtonWrapper>
-                    <Button onClick={() => redirectToLink('signUp')} onKeyPress={() => redirectToLink('signUp')}>{Constants.SIGN_UP}</Button>
-                </HeaderButtonWrapper>
-            </RowWrapper>
-        )
-    }
     
     const SignInForm = (
         <FormWrapper>            
@@ -155,15 +135,6 @@ const SignIn = (props) => {
                     errorMessage={passwordError}
                 />
             </InputWrapper>
-            <InputWrapper ref={passwordRef}>
-                <Dropdown
-                    id='items'
-                    label={'Items'}
-                    ariaLabel={'Items'}
-                    placeholder={'Items'}
-                    items={['item1', 'item2']}                  
-                />
-            </InputWrapper>
             <ColumnWrapper>
                 <HeaderButtonWrapper fullWidth>
                     <Button onClick={validateSignIn} onKeyPress={validateSignIn}>{Constants.SIGN_IN}</Button>
@@ -174,8 +145,7 @@ const SignIn = (props) => {
     )
 
     return (
-        <PageWrapper>
-            <HeaderButtons/>
+        <PageWrapper>            
             {!!showAlert && <AlertWrapper><Alert reason='error' closeAlert={() => setShowAlert('')}><span tabIndex={-1}>{showAlert}</span></Alert></AlertWrapper>}            
             {SignInForm}
         </PageWrapper>

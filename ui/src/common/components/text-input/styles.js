@@ -18,19 +18,19 @@ export const StyledInput = styled.input`
     background: none;
     font-size: ${styleVars.spacing.spacing16};
     font-family: ${styleVars.fonts.globalFont};
-    color: ${styleVars.colors.white};
+    color: ${styleVars.colors.themeColor};
     padding-top: ${styleVars.spacing.spacing12};
     padding-bottom: ${styleVars.spacing.spacing12};
     border: none;    
-    border-bottom: ${styleVars.spacing.spacing2} solid ${props => props.error?styleVars.colors.red:styleVars.colors.white};
+    border-bottom: ${styleVars.spacing.spacing2} solid ${props => props.error?styleVars.colors.red:styleVars.colors.primaryTextColor};
     &:focus {
-        border-bottom: ${styleVars.spacing.spacing2} solid ${props => props.error?styleVars.colors.red:styleVars.colors.oceanBlue};
+        border-bottom: ${styleVars.spacing.spacing2} solid ${props => props.error?styleVars.colors.red:styleVars.colors.themeColor};
     }
 `
 export const Label = styled.label`    
     margin-bottom: ${styleVars.spacing.spacing0};
     margin-left: 1px;  
-    color: solid ${styleVars.colors.white};   
+    color: solid ${styleVars.colors.themeColor};   
     @media ${styleVars.breakpoints.tabletLandscape}, ${styleVars.breakpoints.tabletPortrait} {
         margin-left: ${styleVars.spacing.spacing2};
     }
@@ -55,9 +55,9 @@ export const PasswordShowButton = styled(Button)`
     }
     &: hover {
         background: none;
-    }   
+    }
 `
 export const Suggestion = styled.span`
     display: inline-block;    
-    color: ${styleVars.colors.oceanBlue};
+    color: ${styleVars.colors.themeColor};
 `

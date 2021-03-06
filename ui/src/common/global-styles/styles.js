@@ -1,4 +1,4 @@
-const styles = {
+let styles = {
     spacing: {
         spacing0: '0px',
         spacing2: '2px',
@@ -18,10 +18,10 @@ const styles = {
         spacing200: '200px',        
     },
     colors: {
-        white: '#ffffff',
+        primaryTextColor: '#ffffff',
         red: '#910303',
-        matteBlack: '#181818',
-        oceanBlue: '#1064b3'        
+        themeBackground: '#181818',
+        themeColor: '#ccc60c'        
     },
     breakpoints: {
         tabletLandscape: '(min-width: 1024px)',

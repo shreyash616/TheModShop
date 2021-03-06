@@ -11,8 +11,7 @@ import Constants from '../../../common/constants/signUpConstants'
 import {getKeyValue} from '../../../common/utils/utils'
 
 import {
-    PageWrapper,
-    RowWrapper,
+    PageWrapper,    
     HeaderButtonWrapper,
     FormWrapper,
     InputWrapper,    
@@ -42,12 +41,6 @@ const SignUp = (props) => {
         const field = document.getElementById(id)
         field && field.focus()
         ref && ref.current && window.scroll(0, ref.current.offsetTop)
-    }
-
-    const redirectToLink = (link) => {        
-        setTimeout(() => {
-            props.history.push('/'+link)
-        }, 500)
     }
 
     useEffect(() => {
@@ -125,19 +118,6 @@ const SignUp = (props) => {
         }
         
     }
-
-    const HeaderButtons = () => {
-        return (
-            <RowWrapper>                
-                <HeaderButtonWrapper rightMargin>
-                    <Button onClick={() => redirectToLink('home')} onKeyPress={() => redirectToLink('home')}>{Constants.HOME}</Button>
-                </HeaderButtonWrapper>
-                <HeaderButtonWrapper>
-                    <Button onClick={() => redirectToLink('signIn')} onKeyPress={() => redirectToLink('signIn')}>{Constants.SIGN_IN}</Button>
-                </HeaderButtonWrapper>
-            </RowWrapper>
-        )
-    }
     
     const SignInForm = (
         <FormWrapper>            
@@ -192,8 +172,7 @@ const SignUp = (props) => {
     )
 
     return (
-        <PageWrapper>
-            <HeaderButtons/>
+        <PageWrapper>            
             {!!showAlert && <AlertWrapper><Alert reason='error' closeAlert={() => setShowAlert('')}><span tabIndex={-1}>{showAlert}</span></Alert></AlertWrapper>}            
             {SignInForm}
         </PageWrapper>

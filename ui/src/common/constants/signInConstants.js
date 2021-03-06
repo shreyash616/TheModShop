@@ -1,5 +1,5 @@
 const constants = {
-    SIGN_IN_HEADING: 'Dive in to experience everything we have to offer!',
+    SIGN_IN_HEADING: 'Sign in to start modding!',
     SIGN_IN: 'Sign In',
     SIGN_UP: 'Sign Up',    
     HOME: 'Home',

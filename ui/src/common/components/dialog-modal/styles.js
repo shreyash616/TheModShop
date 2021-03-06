@@ -13,7 +13,7 @@ export const BlockingWrapper = styled.div`
 `
 
 export const ModalWrapper = styled.div`
-    background-color: ${styleVars.colors.matteBlack};    
+    background-color: ${styleVars.colors.themeBackground};    
     display: flex;
     flex-direction: column;
     margin: auto;    
@@ -80,7 +80,7 @@ export const ModalFooter = styled.div`
 export const TitleWrapper = styled.div`    
     margin-right: auto;
     margin-bottom -${styleVars.spacing.spacing12};       
-    border-bottom: ${styleVars.spacing.spacing2} solid ${styleVars.colors.white};
+    border-bottom: ${styleVars.spacing.spacing2} solid ${styleVars.colors.primaryTextColor};
     h1 {        
         margin: ${styleVars.spacing.spacing0};        
     }

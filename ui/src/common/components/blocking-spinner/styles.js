@@ -16,7 +16,7 @@ export const SpinnerWrapper = styled.div`
     display: flex;
     margin: auto;
     margin-top: 100px;       
-    background-color: ${styleVars.colors.matteBlack};    
+    background-color: ${styleVars.colors.themeBackground};    
     border-radius: 2%;
     min-height: 300px;
     min-width: 300px;
@@ -39,9 +39,9 @@ export const Spinner = styled.div`
     z-index: 9999;    
     width: 150px;
     height: 150px;
-    border: 5px solid ${styleVars.colors.matteBlack};
+    border: 5px solid ${styleVars.colors.themeBackground};
     border-radius: 50%;
-    border-top-color: ${styleVars.colors.oceanBlue};
+    border-top-color: ${styleVars.colors.themeColor};
     animation: spin 1s ease-in-out infinite;
     -webkit-animation: spin 1s ease-in-out infinite;
 

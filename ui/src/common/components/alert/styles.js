@@ -6,7 +6,7 @@ export const AlertWrapper = styled.div`
     flex-direction: row;    
     padding: ${styleVars.spacing.spacing8} ${styleVars.spacing.spacing8} ${styleVars.spacing.spacing4} ${styleVars.spacing.spacing8};
     width: 100%;
-    background: ${props => props.reason === 'error'?styleVars.colors.red:styleVars.colors.oceanBlue};    
+    background: ${props => props.reason === 'error'?styleVars.colors.red:styleVars.colors.themeColor};    
     border-radius: 2px;
 `
 
