@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {H1, H2} from '../../../common/components/typography'
 import homeConstants from '../../../common/constants/homeConstants'
+import { withLDConsumer } from 'launchdarkly-react-client-sdk';
 
 import {
   CustomLink,
@@ -8,7 +9,15 @@ import {
   PageWrapper, Section
 } from './styles'
 
-const Home = () => {
+const Home = ({flags}) => {  
+
+  const [showPage, setShowPage] = useState(false)
+
+  useEffect(()=>{
+    if(Object.keys(flags).length > 0){
+      setShowPage(true)
+    }
+  }, [flags])
 
   const getDivision = (header, desc, switchVal) => {
     return (
@@ -24,13 +33,15 @@ const Home = () => {
   }
 
   return (
-      <PageWrapper>        
-        {getDivision(homeConstants.HEADING, homeConstants.SUBHEADING, false)}
-        {getDivision(homeConstants.ABOUT.TITLE, homeConstants.ABOUT.CONTENT, true)}
-        {getDivision(homeConstants.EXPERIENCE.TITLE, homeConstants.EXPERIENCE.CONTENT, false)}
-        {getDivision(homeConstants.DEVICES.TITLE, <React.Fragment>{homeConstants.DEVICES.CONTENT.split(':')[0]}<CustomLink>{homeConstants.DEVICES.CONTENT.split(':')[1]}</CustomLink>{homeConstants.DEVICES.CONTENT.split(':')[2]}<CustomLink>{homeConstants.DEVICES.CONTENT.split(':')[3]}</CustomLink></React.Fragment>, true)}        
+      showPage
+      ?<PageWrapper>        
+        {getDivision(homeConstants.HEADING, homeConstants.SUBHEADING, flags.testflag)}
+        {getDivision(homeConstants.ABOUT.TITLE, homeConstants.ABOUT.CONTENT, !flags.testflag)}
+        {getDivision(homeConstants.EXPERIENCE.TITLE, homeConstants.EXPERIENCE.CONTENT, flags.testflag)}
+        {getDivision(homeConstants.DEVICES.TITLE, <React.Fragment>{homeConstants.DEVICES.CONTENT.split(':')[0]}<CustomLink>{homeConstants.DEVICES.CONTENT.split(':')[1]}</CustomLink>{homeConstants.DEVICES.CONTENT.split(':')[2]}<CustomLink>{homeConstants.DEVICES.CONTENT.split(':')[3]}</CustomLink></React.Fragment>, !flags.testflag)}        
       </PageWrapper>
+      :<div><h1>Loading...</h1></div>
   )
 }
 
-export default Home
+export default withLDConsumer()(Home)

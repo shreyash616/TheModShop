@@ -10,9 +10,9 @@ export const NavbarWrapper = styled.div`
     top: 0;
     overflow: hidden;
     background: ${styleVars.colors.themeBackground};   
-    -webkit-box-shadow: 1px 1px 1px 1px ${styleVars.colors.themeBackground};  
-    -moz-box-shadow:    1px 1px 1px 1px ${styleVars.colors.themeBackground};  
-    box-shadow:         1px 1px 1px 1px ${styleVars.colors.themeBackground};  
+    -webkit-box-shadow: 0px 1px 9px 1px ${styleVars.colors.black};  
+    -moz-box-shadow:    0px 1px 9px 1px ${styleVars.colors.black};  
+    box-shadow:         0px 1px 9px 1px ${styleVars.colors.black};  
 `
 
 export const RowWrapper = styled.div`
@@ -20,7 +20,8 @@ export const RowWrapper = styled.div`
     flex-direction: row;
     width: auto;
     @media ${styleVars.breakpoints.tabletLandscape}, ${styleVars.breakpoints.tabletPortrait} {         
-        margin-left: auto;        
+        margin-left: ${props => props.right ? 'auto' : ''};
+        margin-right: ${props => props.left ? 'auto' : ''};
     }
 `
 export const HeaderButtonWrapper = styled.div`     

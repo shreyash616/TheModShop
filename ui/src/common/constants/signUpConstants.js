@@ -1,7 +1,7 @@
 const constants = {
     SIGN_IN: 'Sign In',
     SIGN_UP: 'Sign Up',
-    SIGN_UP_HEADING: 'Sign up!',
+    SIGN_UP_HEADING: 'Sign up to get started!',
     HOME: 'Home',
     NAME_LABEL: 'Your Name',
     USERNAME_LABEL: 'Username/Email',

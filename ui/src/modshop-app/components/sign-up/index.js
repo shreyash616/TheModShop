@@ -16,7 +16,8 @@ import {
     FormWrapper,
     InputWrapper,    
     ColumnWrapper,
-    AlertWrapper
+    AlertWrapper,
+    Center
 } from './styles'
 
 const mapStateToProps = store => ({
@@ -121,7 +122,7 @@ const SignUp = (props) => {
     
     const SignInForm = (
         <FormWrapper>            
-            <H1>{Constants.SIGN_UP_HEADING}</H1>
+            <Center><H1>{Constants.SIGN_UP_HEADING}</H1></Center>
             <InputWrapper ref={nameRef}>
                 <TextInput
                     id='name'

@@ -21,7 +21,9 @@ let styles = {
         primaryTextColor: '#ffffff',
         red: '#910303',
         themeBackground: '#181818',
-        themeColor: '#ccc60c'        
+        themeColor: '#ccc60c',
+        black: '#000000',
+        formShadow: '0px 7px 19px 2px #000000'       
     },
     breakpoints: {
         tabletLandscape: '(min-width: 1024px)',

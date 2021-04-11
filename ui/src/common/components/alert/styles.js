@@ -7,6 +7,9 @@ export const AlertWrapper = styled.div`
     padding: ${styleVars.spacing.spacing8} ${styleVars.spacing.spacing8} ${styleVars.spacing.spacing4} ${styleVars.spacing.spacing8};
     width: 100%;
     background: ${props => props.reason === 'error'?styleVars.colors.red:styleVars.colors.themeColor};    
+    -webkit-box-shadow: 0px 3px 7px 1px ${styleVars.colors.black};  
+    -moz-box-shadow:    0px 3px 7px 1px ${styleVars.colors.black};  
+    box-shadow:         0px 3px 7px 1px ${styleVars.colors.black}; 
     border-radius: 2px;
 `
 

@@ -44,7 +44,9 @@ export const FormWrapper = styled.div`
     margin-right: auto;    
     width: 100%;
     min-height: 420px;
-    border: ${styleVars.spacing.spacing2} solid ${styleVars.colors.themeColor};
+    -webkit-box-shadow: ${styleVars.colors.formShadow};  
+    -moz-box-shadow: ${styleVars.colors.formShadow};  
+    box-shadow: ${styleVars.colors.formShadow};
     animation: showUp 0.5s ease-out;     
     @keyframes showUp {
         from {

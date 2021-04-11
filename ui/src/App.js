@@ -15,6 +15,8 @@ import SignIn from './modshop-app/components/sign-in'
 import SignUp from './modshop-app/components/sign-up'
 import Spinner from './common/components/blocking-spinner'
 
+import { withLDProvider } from 'launchdarkly-react-client-sdk';
+
 import {
   MainWrapper,
   ContentWrapper,
@@ -31,7 +33,7 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(Actions, dispatch)
 })
 
-const App = (props) => {    
+const App = (props) => {
 
   useEffect(()=>{
     props.signInStatus === 'success' && setTimeout(()=>{
@@ -59,4 +61,13 @@ const App = (props) => {
   )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));
+const LDApp = withLDProvider({
+  clientSideID: '606447a8d4ba940c11f3fa89',
+  user: {
+      "key": "user_key",
+      "name": "User Name",
+      "email": "User@email.com"
+  }  
+})(App);
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(LDApp));

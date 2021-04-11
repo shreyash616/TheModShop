@@ -6,6 +6,7 @@ import Constants from '../../../common/constants/homeConstants'
 
 import { connect } from 'react-redux'
 import { getKeyValue } from '../../../common/utils/utils'
+import Logo from '../../../common/backgrounds/modshop_logo.png'
 
 
 import  {
@@ -34,7 +35,7 @@ const Navbar = props => {
         },
         signIn: {
             left: Constants.HOME,
-            leftRoute: 'signUp',
+            leftRoute: 'home',
             right: Constants.SIGN_UP,
             rightRoute: 'signUp'
         },
@@ -77,11 +78,17 @@ const Navbar = props => {
             </DialogModal>)
     }
 
+    const Brand = () => {
+        return <RowWrapper left>
+            <img src={Logo} alt='modshop logo' height='50px' width='300px'/>
+            </RowWrapper>
+    }
+
     const RightHeaderButtons = () => {
         const signInStatus = getKeyValue(['signInData', 'status'], props) === 'success'
         return (
             !signInStatus
-            ? <RowWrapper>
+            ? <RowWrapper right>
                 <HeaderButtonWrapper rightMargin>
                     <Button onClick={(e) => redirectToLink(e, buttonProps[currentRoute].leftRoute)} onKeyPress={(e) => redirectToLink(e, buttonProps[currentRoute].leftRoute)}>{getKeyValue([currentRoute, 'left'] ,buttonProps)}</Button>
                 </HeaderButtonWrapper>
@@ -99,6 +106,7 @@ const Navbar = props => {
 
     return (
         <NavbarWrapper>
+            <Brand />
             <RightHeaderButtons/>
             <SignOutModal/>
         </NavbarWrapper> )
